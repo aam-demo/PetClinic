@@ -1,0 +1,37 @@
+﻿
+@Html.Partial("~/Views/Shared/_SubNav.cshtml" ,
+    new string[] { "Home", "Index", "Home" })
+
+<h2>Find Owners</h2>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <th>
+                Last Name:
+                <div>
+                    @Html.TextBox("lastname")
+                </div>
+
+                <span class="errors">
+                    @ViewBag.Message
+                </span>
+            </th>
+        </tr>
+        <tr>
+            <td><p class="submit"><input type="submit" value="Find Owners" /></p></td>
+        </tr>
+    </table>
+}
+<br />
+
+@Html.ActionLink("Add owner", "Add", "Owner",
+           null, new { @class = "lb" })
+
+<hr/>
+
+<h3>All Owners</h3>
+
+@Html.Partial("~/Views/Shared/_ListOwners.cshtml", 
+    (IEnumerable<PetClinic.Models.OWNER>) ViewBag.Ownerlist )

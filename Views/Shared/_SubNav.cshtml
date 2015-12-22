@@ -1,0 +1,10 @@
+﻿@model string[]
+
+@* sorta like breadcrumbs; just one parent level 
+model is params for html actionlink 
+    ^ TODO: custom class or delegate or html helper
+*@
+
+<div style="width: 600px; text-align: right;"
+     >@Html.ActionLink( Model[0], Model[1], Model[2]) &lt;== </div>
+@* todo: fancy custom arrow *@

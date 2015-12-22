@@ -1,0 +1,80 @@
+﻿@model PetClinic.Models.OWNER
+
+@{
+    ViewBag.Title = "View owner";
+}
+
+@Html.Partial("~/Views/Shared/_SubNav.cshtml",
+    new string[] { "Owners Home", "Find", "Owner" })
+
+<h2>View owner</h2>
+
+<hr />
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.firstname)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.firstname)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.lastname)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.lastname)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.address)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.address)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.city)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.city)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.telephone)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.telephone)
+    </dd>
+
+</dl>
+
+@{
+    var pets = Model.PET;
+    if (pets.Count > 0)
+    {
+        <text><h3>Owner's Pet(s)</h3></text>
+        foreach (var pet in pets)
+        {
+            <text><div>
+                    <b>
+                        @Html.ActionLink(
+                         pet.name, "View", "Pet",
+                         new { id = pet.id },
+                         null)
+                </b>
+                (@pet.PET_TYPE1.description)
+            </div></text>
+        }
+    }
+}
+
+<br /><br />
+
+@Html.ActionLink("Add pet", "Add", "Pet",
+           new { id = Model.id },
+           new { @class = "lb" })

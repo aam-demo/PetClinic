@@ -1,0 +1,38 @@
+﻿@model List<PetClinic.Models.VET>
+
+@Html.Partial("~/Views/Shared/_SubNav.cshtml" ,
+    new string[] { "Home", "Index", "Home" } )
+
+<h2>All vets</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Specialties</th>
+        </tr>
+    </thead>
+     
+@foreach (PetClinic.Models.VET item in Model)
+{
+    <tr>
+        <td style="font-weight: bold;">@item.firstname @item.lastname</td>
+        
+        <td>
+            @{ 
+                var specs = item.VET_SPECIALTIES  ;
+
+                if (specs.Count > 0)
+                {
+                    foreach (var s  in specs)
+                    {
+                        @s.SPECIALTY1.description 
+                        @Html.Raw(" &nbsp; ")
+                    }
+                }
+            } 
+        </td>
+    </tr>
+}
+</table>
+

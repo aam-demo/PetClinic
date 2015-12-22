@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    Welcome to PetClinic
+</div>
+
+ 
+    <div><img src="@Url.Content("~/Content/pets.png")" 
+              style="float:right; margin: 0 0 15px 15px;" /></div>
+
+    <div style="margin-left: 50px;">
+        @Html.ActionLink("Find owner", "Find", "Owner",
+           null, new { @class = "lb" })
+
+        @Html.ActionLink("Display all veterinarians", "Vets",
+           null, new { @class = "lb" })
+    </div>
+

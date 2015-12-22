@@ -1,0 +1,62 @@
+﻿@model PetClinic.Models.PET
+
+<h2>View Pet</h2>
+<hr />
+<dl class="dl-horizontal">
+
+    <dt>
+        Pet name
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.name)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.birthdate)
+    </dt>
+
+    <dd>
+        @* Html.DisplayFor(model => model.birthdate)*@
+        @if (Model.birthdate.HasValue)
+        {
+            @Model.birthdate.Value.ToString("MM/dd/yyyy")
+        }
+    </dd>
+
+    <dt>
+        Type of pet
+    </dt>
+
+    <dd>
+        @Model.PET_TYPE1.description
+    </dd>
+
+    <dt>
+        Owner (human)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.OWNER1.firstname)
+        @Html.DisplayFor(model => model.OWNER1.lastname)
+    </dd>
+
+    @{
+        if (Model.VISIT.Count > 0)
+        {
+            <text>
+                <dt>Scheduled visits</dt>
+                <dd>
+            </text>
+            foreach (var item in Model.VISIT)
+            {
+                @Html.Encode(item.date)
+            }
+            @Html.Raw("</dd>")
+        }
+    }
+</dl>
+
+@Html.ActionLink("Add visit", "AddVisit", "Pet",
+           new { id = Model.id /*pet id*/ },
+           new { @class = "lb" })

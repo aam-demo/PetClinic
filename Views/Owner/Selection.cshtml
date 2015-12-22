@@ -1,0 +1,12 @@
+﻿@model IEnumerable<PetClinic.Models.OWNER>
+
+@{
+    ViewBag.Title = "Owners";
+}
+
+@Html.Partial("~/Views/Shared/_SubNav.cshtml",
+    new string[] { "Owners Home", "Find", "Owner" })
+
+<h2>List of owners</h2>
+
+@Html.Partial("~/Views/Shared/_ListOwners.cshtml", Model)
